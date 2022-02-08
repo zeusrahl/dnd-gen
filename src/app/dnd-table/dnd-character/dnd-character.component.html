@@ -1,0 +1,37 @@
+<div *ngIf='dndCharacterData'>
+  <div>
+    <table>
+      <tr>
+        <th>Race</th>
+        <th>Class</th>
+      </tr>
+      <tr>
+        <td><label>{{ dndCharacterData.race }}</label></td>
+        <td><label>{{ dndCharacterData.charClass }}</label></td>
+      </tr>
+      <tr>
+        <th colspan="2" style="border-top: 1px solid black">Stats</th>
+      </tr>
+      <tr>
+        <th>Ability</th>
+        <th>Score</th>
+      </tr>
+      <tr *ngFor='let ability of dndCharacterData.statBlock | keyvalue'>
+        <td>
+          {{ ability.key }}
+        </td>
+        <td>
+          {{ ability.value }}
+        </td>
+      </tr>
+      <tr class="shuffle">
+        <td colspan="2">
+          <button mat-raised-button color="primary">
+            Test
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    </div>
+</div>

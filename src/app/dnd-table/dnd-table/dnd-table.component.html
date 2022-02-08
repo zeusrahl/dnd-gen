@@ -1,0 +1,31 @@
+<div class="main-page">
+  <table>
+    <tr>
+      <th colspan="2">
+        Options
+      </th>
+    </tr>
+    <tr class="header">
+      <td>
+        Race
+      </td>
+      <td>
+        Class
+      </td>
+    </tr>
+    <tr *ngFor='let character of allCharacters'>
+      <td>
+        {{ character.race }}
+      </td>
+      <td>
+        {{ character.charClass }}
+      </td>
+    </tr>
+  </table>
+
+  <ng-container  *ngFor='let character of allCharacters'>
+    <app-dnd-character [dndCharacterData]='character'>
+
+    </app-dnd-character>
+  </ng-container>
+</div>
