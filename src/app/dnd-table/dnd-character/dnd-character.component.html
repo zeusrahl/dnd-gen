@@ -1,33 +1,65 @@
 <div *ngIf='dndCharacterData'>
   <div>
-    <table>
+    <table style="table-layout: fixed">
       <tr>
         <th>Race</th>
+        <th>Subrace</th>
         <th>Class</th>
       </tr>
       <tr>
         <td><label>{{ dndCharacterData.race }}</label></td>
+        <td><label>{{ dndCharacterData.subRace}}</label></td>
         <td><label>{{ dndCharacterData.charClass }}</label></td>
       </tr>
       <tr>
-        <th colspan="2" style="border-top: 1px solid black">Stats</th>
+        <th colspan="3" style="border-top: 1px solid black">Stats</th>
       </tr>
+    <!--
       <tr>
-        <th>Ability</th>
-        <th>Score</th>
+        <th style='text-align: left'>Ability</th>
+        <th style='text-align: left'>Score</th>
+        <th style='text-align: left'>Ability Modifier</th>
       </tr>
-      <tr *ngFor='let ability of dndCharacterData.statBlock | keyvalue'>
-        <td>
-          {{ ability.key }}
+            -->
+      <tr>
+        <th style='text-align: left'>Ability</th>
+        <th>|</th>
+        <th style='text-align: left'>Score</th>
+      </tr>
+      <tr
+        *ngFor='let trait of traitOrder'>
+        <!-- can I add an "input" to change these trait's dynamically -->
+        <td style='text-align: left'>
+          {{ trait }}
         </td>
-        <td>
-          {{ ability.value }}
+        <td>|</td>
+        <td style='text-align: left'>
+          <!-- This needs to dynamically change when either the "race" and/or "subRace" is changed from dnd-table.component -->
+          {{ getTrait(trait) }}
         </td>
+      <!--
+        <tr
+          *ngFor='let trait of traitOrder'>
+          <td style='text-align: left'>
+            {{ trait }}
+          </td>
+          <td style='text-align: left'>
+            {{ getTrait(trait) }}
+          </td>
+          <td style='text-align: left'>
+            {{ getMod }} // this will need to be found using 'trait' from above *ngFor
+          </td>
+        </tr>
+            -->
       </tr>
       <tr class="shuffle">
-        <td colspan="2">
-          <button mat-raised-button color="primary">
-            Test
+        <td colspan="3">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="newStatsButtonClick()"
+            #trait>
+            New Stats
           </button>
         </td>
       </tr>

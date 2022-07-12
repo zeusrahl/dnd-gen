@@ -2,7 +2,7 @@
  * @Author: dotsonkellyfam
  * @Date:   2021-10-04T20:25:06-04:00
  * @Last modified by:   dotsonkellyfam
- * @Last modified time: 2022-02-06T21:49:28-05:00
+ * @Last modified time: 2022-05-14T19:41:58-04:00
  */
 
 
@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { DndTableModule } from './dnd-table/dnd-table.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     DndTableModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

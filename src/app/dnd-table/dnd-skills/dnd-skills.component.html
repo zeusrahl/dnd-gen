@@ -1,0 +1,27 @@
+<form [formGroup]='skillChoice'>
+  <!-- <mat-list>
+    <mat-list-item
+      role='listitem'
+      *ngFor='let skill of skills'>
+      {{ skill }}
+    </mat-list-item>
+  </mat-list> -->
+  <ul>
+    <li *ngFor='let skill of skills'>
+      <mat-checkbox
+        [disabled]='enableSkill(skill)'
+        [formControlName]='skill'
+        (change)='onChange(skill)'
+      >
+        {{ skill }}
+      </mat-checkbox>
+    </li>
+    <li>
+      <mat-checkbox
+        (click)='chooseRandomStat()'
+        >
+        random
+      </mat-checkbox>
+    </li>
+  </ul>
+</form>

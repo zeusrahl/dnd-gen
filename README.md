@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+### Ideas
+
+1) Six scores are rolled
+2) A Race is picked, modifying the scores
+2a) If a subrace is available, pick subrace
+3) Class is picked
+3a) Class dictates the location of the six scores for ability

@@ -9,17 +9,97 @@
       <td>
         Race
       </td>
-      <td>
+      <div
+        [ngClass]='{"hidden":!hasSubRace}'>
+        <td style='text-align=center'>
+          Sub-race
+        </td>
+      </div>
+
+      <!-- <td>
         Class
-      </td>
+      </td> -->
     </tr>
-    <tr *ngFor='let character of allCharacters'>
+    <tr>
       <td>
+        <form>
+          <mat-form-field appearance="fill">
+            <mat-label for='race'>Pick your Race</mat-label>
+            <mat-select
+              id='race'
+              [formControl]='raceControl'
+              required>
+              <mat-option
+                *ngFor='let race of raceChoice'
+                [value]='race'
+                (click)='selectRace(raceControl.value)'
+              >
+                {{ race }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </td>
+      <td>
+        <form>
+          <div [ngClass]='{"hidden":!hasSubRace}'>
+            <mat-form-field appearance="fill">
+              <mat-label>Pick your Subrace</mat-label>
+
+              <!-- need selection for dwarf -->
+
+                <mat-select
+                  [formControl]='subRaceControl'
+                  required
+                >
+                  <ng-container *ngIf='RACE_LIST[raceControl.value]'>
+                    <mat-option
+                      *ngFor='let subrace of RACE_LIST[raceControl.value].subRace'
+                      [value]='subrace'
+                      (click)='selectSubRace(subRaceControl.value)'
+                    >
+                      {{ subrace }}
+                    </mat-option>
+                  </ng-container>
+                </mat-select>
+
+
+
+
+              <!-- <mat-select>
+                <mat-option
+                  *ngFor='let character of allCharacters'
+                  [value]='character.charClass'
+                >
+                  {{ character.charClass }}
+                </mat-option>
+              </mat-select> -->
+            </mat-form-field>
+          </div>
+        </form>
+
+
+
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Pick your Class</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor='let character of allCharacters'
+              [value]='character.charClass'
+            >
+              {{ character.charClass }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+      </td>
+      <!-- <td>
         {{ character.race }}
       </td>
       <td>
         {{ character.charClass }}
-      </td>
+      </td> -->
     </tr>
   </table>
 
@@ -27,5 +107,8 @@
     <app-dnd-character [dndCharacterData]='character'>
 
     </app-dnd-character>
+    <app-dnd-skills [dndCharacterData]='character'>
+
+    </app-dnd-skills>
   </ng-container>
 </div>
